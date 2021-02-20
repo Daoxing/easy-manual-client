@@ -1,29 +1,29 @@
 .header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    background-color: #1976d2;
-    color: white;
-    font-weight: 600;
-  }
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: #1976d2;
+  color: white;
+  font-weight: 600;
+}
 
-  .header img {
-    margin: 0 16px;
-  }
+.header img {
+  margin: 0 16px;
+}
 
-  .spacer {
-    flex: 1;
-  }
+.spacer {
+  flex: 1;
+}
 
-  .header #user-logo {
-    height: 40px;
-    margin: 0 16px;
-  }
+.header #user-logo {
+  height: 40px;
+  margin: 0 16px;
+}
 
-  .header #user-logo:hover {
-    opacity: 0.8;
-  }
+.header #user-logo:hover {
+  opacity: 0.8;
+}
