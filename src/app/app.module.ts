@@ -10,6 +10,9 @@ import { ArticleComponent } from './components/article/article.component';
 import { EditingArticleComponent } from './components/editing-article/editing-article.component';
 
 import { QuillModule } from 'ngx-quill';
+import { GraphQLModule } from './graphql.module';
+import { HttpClientModule } from '@angular/common/http';
+import { GroupOptionsComponent } from './components/group-options/group-options.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +21,15 @@ import { QuillModule } from 'ngx-quill';
     HomeComponent,
     ArticleComponent,
     EditingArticleComponent,
+    GroupOptionsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, QuillModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    QuillModule,
+    GraphQLModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

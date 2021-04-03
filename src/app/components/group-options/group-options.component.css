@@ -1,0 +1,17 @@
+.options {
+  cursor: pointer;
+  display: inline;
+  position: relative;
+}
+
+.dropdown {
+  border: 1px solid #000000;
+  background-color: #ffffff;
+  display: block;
+  position: absolute;
+  top: 31px;
+  left: 0;
+  width: 105px;
+  height: auto;
+  max-height: 200px;
+}
