@@ -1,0 +1,25 @@
+<div class="options">
+  <span class="currentOption" (click)="expandList()">
+    {{ currentOption.title }}
+  </span>
+  <div class="dropdown" *ngIf="_expand">
+    <div class="mustShow">
+      <ul class="remove-ul-style">
+        <li (click)="choose(publicOption)">public</li>
+        <li (click)="choose(privateOption)">private</li>
+      </ul>
+    </div>
+    <div class="joinGroups">
+      <button (click)="addNewGroup()">add new group</button>
+      <ul
+        *ngIf="options.length; else emptyJoinedGroups"
+        class="remove-ul-style"
+      >
+        <li *ngFor="let option of options" (click)="choose(option)">
+          {{ option.title }}
+        </li>
+      </ul>
+      <ng-template #emptyJoinedGroups> </ng-template>
+    </div>
+  </div>
+</div>

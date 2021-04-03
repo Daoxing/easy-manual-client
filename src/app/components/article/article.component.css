@@ -1,33 +1,10 @@
 .toolbar {
-  display: -webkit-flex; /* Safari */
-  display: flex;
-  flex-direction: row;
   width: 100%;
-  height: 60px;
-  background-color: violet;
+  height: 40px;
+  border: 1px solid #000000;
+  margin-bottom: 10px;
 }
 
-.main {
-  display: -webkit-flex; /* Safari */
-  display: flex;
-  flex-direction: row;
-  height: 500px;
-}
-
-.content {
-  -webkit-flex: 1; /* Safari 6.1+ */
-  flex: 1;
-  background-color: red;
-}
-
-.chapter {
-  -webkit-flex: 5; /* Safari 6.1+ */
-  flex: 5;
-  background-color: yellow;
-}
-
-.comments {
-  -webkit-flex: 2; /* Safari 6.1+ */
-  flex: 2;
-  background-color: blue;
+.edit {
+  color: #000000;
 }
