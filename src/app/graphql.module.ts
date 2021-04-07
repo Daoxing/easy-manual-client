@@ -11,20 +11,6 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   };
 }
 
-/*
-apollo query example
- this.apollo
-      .watchQuery({
-        query: gql`
-          {
-            root
-          }
-        `,
-      })
-      .valueChanges.subscribe((result: any) => {
-      });
-*/
-
 @NgModule({
   providers: [
     {

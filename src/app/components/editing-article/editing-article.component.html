@@ -6,7 +6,7 @@
       (change)="setGroup($event)"
     ></app-group-options>
   </div>
-  <input id="title" type="text" [value]="" />
+  <input id="title" [(ngModel)]="articleName" type="text" />
   <div id="toolbar">
     <button class="ql-bold">Bold</button>
     <button class="ql-italic">Italic</button>

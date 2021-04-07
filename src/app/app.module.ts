@@ -13,6 +13,7 @@ import { QuillModule } from 'ngx-quill';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { GroupOptionsComponent } from './components/group-options/group-options.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { GroupOptionsComponent } from './components/group-options/group-options.
     QuillModule,
     GraphQLModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
