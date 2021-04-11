@@ -1,0 +1,33 @@
+<div class="main">
+  <div id="user-info">
+    <i
+      class="fa fa-user user-logo black-color logo-frame-size-160 logo-icon-size-100"
+    ></i>
+    <div class="user-overview">
+      <span>Name</span>
+      <span>Name</span>
+    </div>
+  </div>
+  <div class="tab">
+    <div class="tab-title-underline">
+      <ul class="remove-ul-style tab-title-box">
+        <li class="tab-title active-title" (click)="switchTab($event, 0)">
+          Joined Groups
+        </li>
+        <li class="tab-title" (click)="switchTab($event, 1)">
+          Accessable Articles
+        </li>
+        <li class="tab-title" (click)="switchTab($event, 2)">My Articles</li>
+      </ul>
+    </div>
+    <div class="tab-content-box">
+      <div class="tab-content active-content">content1</div>
+      <div class="tab-content">content2</div>
+      <div class="tab-content">content3</div>
+    </div>
+  </div>
+  <!-- <mat-tab-group>
+      <mat-tab label="first">content 1</mat-tab>
+      <mat-tab label="second">content 2</mat-tab>
+  </mat-tab-group> -->
+</div>

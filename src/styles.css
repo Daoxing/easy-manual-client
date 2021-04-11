@@ -19,5 +19,26 @@ a:visited,
 a:focus,
 a:active {
   text-decoration: none;
+}
+
+.black-font {
+  color: #000000;
+}
+
+.white-font {
   color: #ffffff;
+}
+
+.user-logo {
+  display: flex;
+  margin: 0 16px;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 20px;
+}
+
+.user-logo:hover {
+  opacity: 0.8;
 }
