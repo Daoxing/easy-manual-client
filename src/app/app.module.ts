@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { GroupOptionsComponent } from './components/group-options/group-options.component';
 import { FormsModule } from '@angular/forms';
 import { UserComponent } from './components/user/user.component';
+import { GroupComponent } from './components/group/group.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { UserComponent } from './components/user/user.component';
     EditingArticleComponent,
     GroupOptionsComponent,
     UserComponent,
+    GroupComponent,
   ],
   imports: [
     BrowserModule,

@@ -42,3 +42,7 @@ a:active {
 .user-logo:hover {
   opacity: 0.8;
 }
+
+.black-color {
+  color: #000000;
+}
