@@ -14,6 +14,7 @@ import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { GroupOptionsComponent } from './components/group-options/group-options.component';
 import { FormsModule } from '@angular/forms';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FormsModule } from '@angular/forms';
     ArticleComponent,
     EditingArticleComponent,
     GroupOptionsComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,

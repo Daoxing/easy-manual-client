@@ -11,7 +11,7 @@
   font-weight: 600;
 }
 
-.header .title {
+.header .site-title {
   margin: 0 16px;
 }
 
@@ -19,11 +19,11 @@
   flex: 1;
 }
 
-.header #user-logo {
+.logo-frame-size-40 {
   height: 40px;
-  margin: 0 16px;
+  width: 40px;
 }
 
-.header #user-logo:hover {
-  opacity: 0.8;
+.logo-icon-size-32 {
+  font-size: 32px;
 }

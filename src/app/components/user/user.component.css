@@ -1,0 +1,48 @@
+#user-info {
+  border-bottom: 3px solid #dbdbdb;
+  display: flex;
+  display: -webkit-flex; /* Safari */
+}
+.user-overview {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-overview span {
+  margin-top: 10px;
+}
+.logo-frame-size-160 {
+  height: 160px;
+  width: 160px;
+}
+
+.logo-icon-size-100 {
+  font-size: 100px;
+}
+.black-color {
+  color: #000000;
+}
+/* .tab-title-underline{
+    border-bottom: 3px solid #dbdbdb;
+} */
+.tab-title-box {
+  display: flex;
+}
+.tab-title-box li {
+  cursor: pointer;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 16px;
+  padding-left: 4px;
+}
+
+.active-title {
+  border-bottom: 3px solid #1976d2;
+}
+
+.tab-content {
+  display: none;
+}
+.active-content {
+  display: block;
+}
