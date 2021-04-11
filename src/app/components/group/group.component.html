@@ -1,0 +1,46 @@
+<div class="main">
+  <div class="group-title">
+    <h3>group title</h3>
+  </div>
+
+  <div class="group-intro"><p></p></div>
+
+  <div class="tab">
+    <div>
+      <ul class="remove-ul-style tab-title-box">
+        <li class="tab-title active-title" (click)="switchTab($event, 0)">
+          Groups Members
+        </li>
+        <li class="tab-title" (click)="switchTab($event, 1)">
+          Articles in Group
+        </li>
+      </ul>
+    </div>
+    <div class="tab-content-box">
+      <div class="tab-content active-content members" name="members">
+        <div class="tab-toolbar"></div>
+        <div *ngIf="users.length; else emptyUser">
+          <div class="member" *ngFor="let user of users">
+            <a href="/user?id=article"
+              ><i
+                class="fa fa-user logo-frame-size-40 logo-icon-size-32 member-icon"
+              ></i>
+              <span class="member-name">{{ user }}</span>
+            </a>
+          </div>
+        </div>
+        <ng-template #emptyUser> <p>No User Joined!</p></ng-template>
+      </div>
+
+      <div class="tab-content articles" name="articles">
+        <div class="tab-toolbar"></div>
+        <ul *ngIf="articles.length; else emptyArticle" class="remove-ul-style">
+          <li *ngFor="let article of articles">
+            <a href="/article?id=article">{{ article }} </a>
+          </li>
+        </ul>
+        <ng-template #emptyArticle> <p>No Articles Created!</p></ng-template>
+      </div>
+    </div>
+  </div>
+</div>

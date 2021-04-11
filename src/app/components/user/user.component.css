@@ -19,12 +19,7 @@
 .logo-icon-size-100 {
   font-size: 100px;
 }
-.black-color {
-  color: #000000;
-}
-/* .tab-title-underline{
-    border-bottom: 3px solid #dbdbdb;
-} */
+
 .tab-title-box {
   display: flex;
 }
