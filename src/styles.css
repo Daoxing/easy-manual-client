@@ -46,3 +46,18 @@ a:active {
 .black-color {
   color: #000000;
 }
+
+.common-button {
+  background-color: #1976d2;
+  color: #ffffff;
+  border-radius: 4px;
+}
+.common-button:disabled {
+  background-color: #66a4e2;
+  color: #ffffff;
+  border-radius: 4px;
+}
+
+.common-input-text {
+  border-radius: 4px;
+}

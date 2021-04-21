@@ -13,10 +13,14 @@ import { QuillModule } from 'ngx-quill';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { GroupOptionsComponent } from './components/group-options/group-options.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserComponent } from './components/user/user.component';
 import { GroupComponent } from './components/group/group.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { LoginModalComponent } from './components/login-modal/login-modal.component';
+import { LinkOptionsComponent } from './components/link-options/link-options.component';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +31,8 @@ import { GroupComponent } from './components/group/group.component';
     GroupOptionsComponent,
     UserComponent,
     GroupComponent,
+    LoginModalComponent,
+    LinkOptionsComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +41,10 @@ import { GroupComponent } from './components/group/group.component';
     GraphQLModule,
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
+    ModalModule.forRoot(),
+    ReactiveFormsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as Quill from 'quill';
 import { ArticleService } from '../../services';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 interface IArticle {
   article_nme?: string;
   article_content?: string;
@@ -16,7 +17,10 @@ export class EditingArticleComponent implements OnInit {
   groupOptions: any[];
   group: any;
   articleName: string = '';
-  constructor(private articleService: ArticleService) {}
+  constructor(
+    private articleService: ArticleService,
+    private modalService: BsModalService,
+  ) {}
 
   ngOnInit(): void {
     this.editor = new Quill('#editor', {

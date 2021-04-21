@@ -1,0 +1,50 @@
+<div *ngIf="step === 1; else step2" class="login-modal-box">
+  <div>
+    <label> Account: </label>
+    <input
+      type="text"
+      [formControl]="account"
+      placeholder="Email/Phone number"
+      (focus)="focusClear()"
+    />
+  </div>
+  <div>
+    <input type="checkbox" [formControl]="agreeTerms" name="agreeTerms" />
+    <label for="agreeTerms">Agree our terms and policy by click submit</label>
+  </div>
+
+  <div *ngIf="message" class="error">
+    {{ message }}
+  </div>
+  <button
+    class="common-button"
+    (click)="login()"
+    [disabled]="!account.value.length || !agreeTerms.value"
+  >
+    Submit
+  </button>
+</div>
+<ng-template #step2>
+  <div class="login-modal-box">
+    <div>
+      <label> Code: </label>
+      <input
+        type="text"
+        [formControl]="code"
+        placeholder="Code"
+        (focus)="focusClear()"
+      />
+    </div>
+
+    <button
+      class="common-button"
+      (click)="verifyCode()"
+      [disabled]="!code.value.length"
+    >
+      Verify
+    </button>
+    <div *ngIf="message" class="error">
+      {{ message }}
+    </div>
+  </div>
+</ng-template>
