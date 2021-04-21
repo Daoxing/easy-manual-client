@@ -5,3 +5,4 @@ export * from './group-options/group-options.component';
 export * from './header/header.component';
 export * from './home/home.component';
 export * from './user/user.component';
+export * from './login-modal/login-modal.component';

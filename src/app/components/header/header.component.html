@@ -4,7 +4,15 @@
   </span>
   <div class="spacer"></div>
 
-  <a href="/user">
-    <i class="fa fa-user user-logo logo-frame-size-40 logo-icon-size-32"></i>
-  </a>
+  <div (click)="popUserOptions()">
+    <i
+      *ngIf="!userLogin; else loginUser"
+      class="fa fa-user user-logo logo-frame-size-40 logo-icon-size-32"
+    ></i>
+    <ng-template #loginUser>
+      <i
+        class="fa fa-desktop user-logo logo-frame-size-40 logo-icon-size-32"
+      ></i>
+    </ng-template>
+  </div>
 </div>

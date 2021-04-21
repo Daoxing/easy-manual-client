@@ -1,0 +1,10 @@
+.login-modal-box {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+}
+
+.login-modal-box div {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
