@@ -15,3 +15,20 @@ export const VERIFY_CODE = gql`
     }
   }
 `;
+
+export const ME = gql`
+  query me {
+    me {
+      user_id
+      user_nme
+      email_address
+      phone_nbr
+      icon_url
+      gender
+      my_groups {
+        group_id
+        group_nme
+      }
+    }
+  }
+`;

@@ -1,17 +1,37 @@
 .options {
   cursor: pointer;
-  display: inline;
   position: relative;
+  width: 200px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
 }
 
 .dropdown {
-  border: 1px solid #000000;
+  border: 1px solid #ccc;
   background-color: #ffffff;
   display: block;
   position: absolute;
-  top: 31px;
+  top: 39px;
   left: 0;
-  width: 105px;
+  width: 200px;
   height: auto;
   max-height: 200px;
+  overflow: scroll;
+  overflow-x: hidden;
+  z-index: 100;
+}
+.option {
+  padding-left: 10px;
+}
+.selected-option {
+  padding-left: 10px;
+  background-color: #1976d2;
+  color: #ffffff;
+}
+.create-group-button {
+  width: 100%;
+  text-align: center;
 }

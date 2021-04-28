@@ -21,6 +21,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
 import { LinkOptionsComponent } from './components/link-options/link-options.component';
 import { ToastrModule } from 'ngx-toastr';
+import { NewGroupComponent } from './components/new-group/new-group.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +34,7 @@ import { ToastrModule } from 'ngx-toastr';
     GroupComponent,
     LoginModalComponent,
     LinkOptionsComponent,
+    NewGroupComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,9 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserAnimationsModule,
     ModalModule.forRoot(),
     ReactiveFormsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-center',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

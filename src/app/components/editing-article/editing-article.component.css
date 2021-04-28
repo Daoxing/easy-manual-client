@@ -1,20 +1,31 @@
-#title {
-  max-width: 1076px;
-  height: 40px;
-  border: 2px solid black;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  width: 1080px;
-  padding: 0px;
+.article-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
 }
 
-#toolbar {
-  border: 1px solid black;
-  margin-top: 5px;
-  margin-bottom: 5px;
+.article-title .obejct {
+  flex-grow: 1;
+  width: -webkit-fill-available;
 }
-#editor {
-  border: 3px solid black;
+.article-title .verb {
+  margin-left: 10px;
+}
+.article-title .preposition {
+  margin-left: 10px;
+}
+.article-title .subject {
+  margin-left: 10px;
+}
+#title {
+  height: 40px;
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+.article-content {
+  border: 1px solid #ccc;
   height: 600px;
   max-height: 800px;
   margin-bottom: 80px;

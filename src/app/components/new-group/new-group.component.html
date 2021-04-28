@@ -1,0 +1,31 @@
+<div>
+  <div>
+    <label> Name: </label>
+    <input
+      type="text"
+      [formControl]="groupName"
+      placeholder="Group Name"
+      (focus)="focusClear()"
+    />
+  </div>
+  <div>
+    <label> Introduction: </label>
+    <input
+      type="text"
+      [formControl]="groupIntro"
+      placeholder="Group Introduction"
+      (focus)="focusClear()"
+    />
+  </div>
+  <div>
+    {{ message }}
+  </div>
+
+  <button
+    class="common-button"
+    (click)="createNewGroup()"
+    [disabled]="!groupName.value.length"
+  >
+    Create
+  </button>
+</div>

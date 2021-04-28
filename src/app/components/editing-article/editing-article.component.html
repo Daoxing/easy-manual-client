@@ -1,15 +1,21 @@
 <div class="main">
-  <div>
-    <button (click)="onSave()">Save</button>
+  <div class="article-title">
+    <!-- TODO add last updated time -->
+    <input class="obejct" id="title" [formControl]="articleName" type="text" />
+    <button
+      (click)="onSave()"
+      class="verb common-button"
+      [disabled]="!articleName.value.length"
+    >
+      Save
+    </button>
+    <span class="preposition"> To </span>
     <app-group-options
-      [options]="groupOptions"
+      class="subject"
+      [setOptions]="groupOptions"
+      [currentOption]="currentGroup"
       (change)="setGroup($event)"
     ></app-group-options>
   </div>
-  <input id="title" [(ngModel)]="articleName" type="text" />
-  <div id="toolbar">
-    <button class="ql-bold">Bold</button>
-    <button class="ql-italic">Italic</button>
-  </div>
-  <div id="editor"></div>
+  <div id="editor" class="article-content"></div>
 </div>

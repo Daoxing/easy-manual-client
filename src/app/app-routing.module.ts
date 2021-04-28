@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'article', component: ArticleComponent },
   { path: 'article/edit', component: EditingArticleComponent },
+  { path: 'article/new', component: EditingArticleComponent },
   { path: 'user', component: UserComponent },
   { path: 'group', component: GroupComponent },
 ];
