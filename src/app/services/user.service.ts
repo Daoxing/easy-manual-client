@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import { VERIFY_CODE } from '../graphql';
+import { ME, VERIFY_CODE } from '../graphql';
 import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
@@ -18,6 +18,17 @@ export class UserService {
       .pipe(
         map(({ data }) => {
           return data.verifyCode;
+        }),
+      );
+  }
+  me() {
+    return this.apollo
+      .watchQuery<any>({
+        query: ME,
+      })
+      .valueChanges.pipe(
+        map(({ data }) => {
+          return data.me;
         }),
       );
   }

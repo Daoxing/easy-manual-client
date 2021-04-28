@@ -1,22 +1,44 @@
-<div class="options">
-  <span class="currentOption" (click)="expandList()">
-    {{ currentOption.title }}
+<div class="options" (click)="expandList()">
+  <span class="option">
+    {{ currentOption.group_nme }}
   </span>
   <div class="dropdown" *ngIf="_expand">
-    <div class="mustShow">
+    <div>
       <ul class="remove-ul-style">
-        <li (click)="choose(publicOption)">public</li>
-        <li (click)="choose(privateOption)">private</li>
+        <li
+          (click)="choose(publicOption)"
+          [ngClass]="{
+            'selected-option': publicOption.group_id === currentOption.group_id
+          }"
+        >
+          <span class="option">public</span>
+        </li>
+        <li
+          (click)="choose(privateOption)"
+          [ngClass]="{
+            'selected-option': privateOption.group_id === currentOption.group_id
+          }"
+        >
+          <span class="option">private</span>
+        </li>
       </ul>
     </div>
-    <div class="joinGroups">
-      <button (click)="addNewGroup()">add new group</button>
+    <div>
+      <button (click)="addNewGroup()" class="common-button create-group-button">
+        Create Group
+      </button>
       <ul
         *ngIf="options.length; else emptyJoinedGroups"
         class="remove-ul-style"
       >
-        <li *ngFor="let option of options" (click)="choose(option)">
-          {{ option.title }}
+        <li
+          *ngFor="let option of options"
+          (click)="choose(option)"
+          [ngClass]="{
+            'selected-option': option.group_id === currentOption.group_id
+          }"
+        >
+          <span class="option"> {{ option.group_nme }}</span>
         </li>
       </ul>
       <ng-template #emptyJoinedGroups> </ng-template>

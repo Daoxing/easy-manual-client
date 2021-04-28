@@ -1146,6 +1146,11 @@
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.7.tgz#98a993516c859eb0d5c4c8f098317a9ea68db9ad"
   integrity sha512-cxWFQVseBm6O9Gbw1IWb8r6OS4OhSt3hPZLkFApLjM8TEXROBuQGLAH2i2gZpcXdLBIrpXuTDhH7Vbm1iXmNGA==
 
+"@types/lodash@^4.14.168":
+  version "4.14.168"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.168.tgz#fe24632e79b7ade3f132891afff86caa5e5ce008"
+  integrity sha512-oVfRvqHV/V6D1yifJbVRU3TMp8OT6o6BG+U9MkwuJ3U8/CsDHvalRpsxBqivn71ztOFZBTfJMvETbqHiaNSj7Q==
+
 "@types/minimatch@*":
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
@@ -5378,6 +5383,11 @@ lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
 
+lodash@^4.17.21:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
+
 log-symbols@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-3.0.0.tgz#f3a08516a5dea893336a7dee14d18a1cfdab77c4"
@@ -5842,12 +5852,12 @@ ngx-quill@^13.2.0:
   dependencies:
     tslib "^2.0.0"
 
-ngx-toastr@^13.2.1:
-  version "13.2.1"
-  resolved "https://registry.yarnpkg.com/ngx-toastr/-/ngx-toastr-13.2.1.tgz#531bc7da6a524a861e0409bd2749878b3b3f8a3f"
-  integrity sha512-UAzp7/xWK9IXA2LsOmhpaaIGCqscvJokoQpBNpAMrjEkDeSlFf8PWQAuQY795KW0mJb3qF9UG/s23nsXfMYKmg==
+ngx-toastr@12.1.0:
+  version "12.1.0"
+  resolved "https://registry.yarnpkg.com/ngx-toastr/-/ngx-toastr-12.1.0.tgz#50f6eee4262f4ba342918f06f98a657f223194cf"
+  integrity sha512-rytCRBhvuudj614Kfj9GoIVQDrFuLvHSMP1YrMwTmR1SNkNJZOpGKmaSDCCBrNDkSrGouzMWBlFbl1UDBBsiqw==
   dependencies:
-    tslib "^2.0.0"
+    tslib "^1.10.0"
 
 nice-try@^1.0.4:
   version "1.0.5"
