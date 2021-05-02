@@ -11,18 +11,13 @@ export class ArticleService {
 
   createArticle(articleInfo: any) {
     return this.apollo
-      .mutate({
+      .mutate<any>({
         mutation: CREATE_ARTICLE,
         variables: {
           articleInfo,
         },
       })
-      .subscribe(
-        ({ data }) => {
-          console.log('---->', data);
-        },
-        (error) => {},
-      );
+      .pipe(map(({ data }) => data.createArticle));
   }
 
   getArticle(id: string) {
