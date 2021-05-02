@@ -1,17 +1,64 @@
 <div class="main">
-  <h3>article title</h3>
-  <div class="infobar">
-    <a class="icon" href="/user">
-      <img src="" />
-    </a>
-    <a class="black-font" href="/user">
-      <span> creater </span>
-    </a>
-    <a
-      class="black-font"
-      href="/article/edit?id=cb52313b-7b32-410d-86cd-950b7be2c512"
-      >EDIT</a
-    >
+  <h3 class="article-title" *ngIf="articleName.length; else emptyTitle">
+    {{ articleName }}
+  </h3>
+  <ng-template #emptyTitle>
+    <h3 class="article-title">Article Title</h3>
+  </ng-template>
+
+  <div class="info">
+    <div class="article-info">
+      <a href="/user?id={{ creatorId }}">
+        <div class="creator-bar">
+          <div class="creator-icon" *ngIf="iconURL.length; else defaultIcon">
+            <img [src]="iconURL" />
+          </div>
+          <ng-template #defaultIcon>
+            <div class="creator-icon">
+              <i
+                class="black-color fa fa-user user-logo logo-frame-size-40 logo-icon-size-32"
+              ></i>
+            </div>
+          </ng-template>
+          <div class="creator-info">
+            <div>{{ creatorUserName }}</div>
+            <div>created time</div>
+          </div>
+        </div>
+      </a>
+      <div class="article-group">
+        <span> Belong To </span>
+
+        <a *ngIf="hasGroup; else noGroup" href="/group?id={{ groupId }}">
+          {{ groupName }}
+        </a>
+        <ng-template #noGroup>
+          <div>{{ groupName }}</div>
+        </ng-template>
+      </div>
+    </div>
+
+    <div class="article-action">
+      <i
+        (click)="markArticle()"
+        class="cursor-pointer black-color fa fa-bookmark user-logo logo-frame-size-40 logo-icon-size-32"
+      ></i>
+      <a
+        *ngIf="editable"
+        class="black-font"
+        href="/article/edit?id={{ articleId }}"
+      >
+        EDIT
+      </a>
+    </div>
   </div>
-  <div class="article-content">article content</div>
+
+  <div
+    [innerHTML]="articleHTML"
+    class="article-content"
+    *ngIf="articleHTML.length; else emptyContent"
+  ></div>
+  <ng-template #emptyContent>
+    <div class="article-content">This content is not avaliable</div>
+  </ng-template>
 </div>

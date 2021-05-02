@@ -6,18 +6,16 @@ import { HomeComponent } from './components/home/home.component';
 import { EditingArticleComponent } from './components/editing-article/editing-article.component';
 import { UserComponent } from './components/user/user.component';
 import { GroupComponent } from './components/group/group.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ROUTER } from './constant';
 const routes: Routes = [
-  {
-    path: 'home',
-    redirectTo: '/home',
-  },
-
-  { path: 'home', component: HomeComponent },
-  { path: 'article', component: ArticleComponent },
-  { path: 'article/edit', component: EditingArticleComponent },
-  { path: 'article/new', component: EditingArticleComponent },
-  { path: 'user', component: UserComponent },
-  { path: 'group', component: GroupComponent },
+  { path: ROUTER.HOME_URL, component: HomeComponent },
+  { path: ROUTER.ARTICLE, component: ArticleComponent },
+  { path: ROUTER.EDIT_CREATE_URL, component: EditingArticleComponent },
+  { path: ROUTER.CREATE_ARTICLE_URL, component: EditingArticleComponent },
+  { path: ROUTER.USER_URL, component: UserComponent },
+  { path: ROUTER.GROUP_URL, component: GroupComponent },
+  { path: ROUTER.PAGE_NOT_FOUND_URL, component: PageNotFoundComponent },
 ];
 
 @NgModule({

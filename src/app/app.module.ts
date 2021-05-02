@@ -22,6 +22,7 @@ import { LoginModalComponent } from './components/login-modal/login-modal.compon
 import { LinkOptionsComponent } from './components/link-options/link-options.component';
 import { ToastrModule } from 'ngx-toastr';
 import { NewGroupComponent } from './components/new-group/new-group.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { NewGroupComponent } from './components/new-group/new-group.component';
     LoginModalComponent,
     LinkOptionsComponent,
     NewGroupComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

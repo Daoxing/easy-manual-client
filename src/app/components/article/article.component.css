@@ -1,6 +1,49 @@
-.toolbar {
+.article-title {
+  margin-top: 10px;
+}
+.info {
+  display: flex;
+  flex-direction: row;
   width: 100%;
-  height: 40px;
-  border: 1px solid #000000;
-  margin-bottom: 10px;
+  height: 50px;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.article-info {
+  display: flex;
+  flex-direction: row;
+}
+.article-group {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+}
+.article-group > a,
+.article-group > div,
+.article-group > span {
+  padding-left: 10px;
+}
+.creator-bar {
+  display: flex;
+  flex-direction: row;
+}
+.creator-icon img {
+  width: 50px;
+  height: 50px;
+}
+.creator-info {
+  flex-direction: row;
+  padding-left: 10px;
+}
+.creator-info div {
+  padding: 0px;
+  margin: 0px;
+}
+.article-action {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+}
+.article-content {
+  margin-top: 10px;
 }

@@ -61,3 +61,7 @@ a:active {
 .common-input-text {
   border-radius: 4px;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}

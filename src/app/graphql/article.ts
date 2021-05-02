@@ -24,10 +24,18 @@ export const QUERY_ARTICLE = gql`
         article_nme
         article_content
         only_me
+        created_tms
+        updated_tms
+        created_user {
+          user_id
+          user_nme
+          icon_url
+        }
         group {
           group_id
           group_nme
         }
+        editable
       }
     }
   }
