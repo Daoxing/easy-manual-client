@@ -19,11 +19,13 @@
   flex: 1;
 }
 
-.logo-frame-size-40 {
-  height: 40px;
+.logo-image {
   width: 40px;
+  height: 40px;
+  cursor: pointer;
+  margin: 0 16px;
 }
 
-.logo-icon-size-32 {
-  font-size: 32px;
+.logo-image:hover {
+  opacity: 0.8;
 }

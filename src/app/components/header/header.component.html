@@ -1,6 +1,6 @@
 <div class="header">
   <span class="site-title">
-    <a class="white-font" href="/article">EASY MANUAL</a>
+    <a class="white-font" href="/">EASY MANUAL</a>
   </span>
   <div class="spacer"></div>
 
@@ -10,9 +10,14 @@
       class="fa fa-user user-logo logo-frame-size-40 logo-icon-size-32"
     ></i>
     <ng-template #loginUser>
-      <i
-        class="fa fa-desktop user-logo logo-frame-size-40 logo-icon-size-32"
-      ></i>
+      <div *ngIf="iconURL.length; else defaultIcon">
+        <img class="logo-image" [src]="iconURL" />
+      </div>
+      <ng-template #defaultIcon>
+        <i
+          class="fa fa-user user-logo logo-frame-size-40 logo-icon-size-32"
+        ></i>
+      </ng-template>
     </ng-template>
   </div>
 </div>

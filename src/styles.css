@@ -38,7 +38,14 @@ a:active {
   border: 1px solid #ffffff;
   border-radius: 20px;
 }
+.logo-frame-size-40 {
+  height: 40px;
+  width: 40px;
+}
 
+.logo-icon-size-32 {
+  font-size: 32px;
+}
 .user-logo:hover {
   opacity: 0.8;
 }
