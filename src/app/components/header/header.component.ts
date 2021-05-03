@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { UserService } from 'src/app/services';
 import { LoginModalComponent } from '../.';
 
 @Component({
@@ -10,14 +11,21 @@ import { LoginModalComponent } from '../.';
 export class HeaderComponent implements OnInit {
   modalRef: BsModalRef;
   userLogin: any;
-  constructor(private modalService: BsModalService) {}
+  iconURL: string = '';
+  constructor(
+    private modalService: BsModalService,
+    private userService: UserService,
+  ) {}
   ngOnInit(): void {
     this.userLogin = !!localStorage.getItem('token');
+    if (this.userLogin) {
+      this.userService.me().subscribe((data) => {
+        this.iconURL = data.icon_url;
+      });
+    }
   }
 
   popUserOptions() {
-    // TODO remove clear function
-    localStorage.clear();
     const localToken = localStorage.getItem('token');
     if (!localToken) {
       this.modalRef = this.modalService.show(LoginModalComponent);
