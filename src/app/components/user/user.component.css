@@ -2,6 +2,8 @@
   border-bottom: 3px solid #dbdbdb;
   display: flex;
   display: -webkit-flex; /* Safari */
+  margin-top: 10px;
+  padding-bottom: 10px;
 }
 .user-overview {
   display: flex;
@@ -11,13 +13,13 @@
 .user-overview span {
   margin-top: 10px;
 }
-.logo-frame-size-160 {
-  height: 160px;
-  width: 160px;
-}
 
-.logo-icon-size-100 {
-  font-size: 100px;
+.user-icon img {
+  width: 160px;
+  height: 160px;
+}
+.tab-content-box {
+  margin-top: 10px;
 }
 
 .tab-title-box {
@@ -40,4 +42,11 @@
 }
 .active-content {
   display: block;
+}
+.group-item {
+  display: flex;
+  justify-content: space-between;
+}
+.group-item span {
+  flex: 1;
 }

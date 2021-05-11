@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services';
 import { LoginModalComponent } from '../.';
 
@@ -15,6 +16,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private modalService: BsModalService,
     private userService: UserService,
+    private toastr: ToastrService,
   ) {}
   ngOnInit(): void {
     this.userLogin = !!localStorage.getItem('token');

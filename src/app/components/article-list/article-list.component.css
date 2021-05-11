@@ -1,0 +1,20 @@
+.group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #bbbbbb;
+  height: 44px;
+}
+.group-item span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+.sort-button {
+  cursor: pointer;
+}
+.moreArticles {
+  text-align: center;
+  cursor: pointer;
+}

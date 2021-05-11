@@ -23,6 +23,11 @@ import { LinkOptionsComponent } from './components/link-options/link-options.com
 import { ToastrModule } from 'ngx-toastr';
 import { NewGroupComponent } from './components/new-group/new-group.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ArticleListComponent } from './components/article-list/article-list.component';
+import { IconComponent } from './components/icon/icon.component';
+import { GroupListComponent } from './components/group-list/group-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +42,10 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     LinkOptionsComponent,
     NewGroupComponent,
     PageNotFoundComponent,
+    UpdateUserComponent,
+    ArticleListComponent,
+    IconComponent,
+    GroupListComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +60,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-center',
     }),
+    BsDropdownModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

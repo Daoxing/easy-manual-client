@@ -9,7 +9,7 @@ body {
 }
 .main {
   width: 1080px;
-  margin: 0 auto;
+  margin: 0px auto;
   height: auto;
   max-height: 800;
 }
@@ -36,15 +36,30 @@ a:active {
   justify-content: center;
   color: #ffffff;
   border: 1px solid #ffffff;
-  border-radius: 20px;
+}
+.center-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .logo-frame-size-40 {
   height: 40px;
   width: 40px;
+  border-radius: 20px;
 }
 
 .logo-icon-size-32 {
   font-size: 32px;
+}
+.logo-frame-size-160 {
+  height: 160px;
+  width: 160px;
+  border: 1px solid #000000;
+  border-radius: 160px;
+}
+
+.logo-icon-size-100 {
+  font-size: 100px;
 }
 .user-logo:hover {
   opacity: 0.8;

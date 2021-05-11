@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import { ME, VERIFY_CODE } from '../graphql';
+import { FIND_USER_BY_ID, ME, UPDATE_USER_INFO, VERIFY_CODE } from '../graphql';
 import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
@@ -23,12 +23,40 @@ export class UserService {
   }
   me() {
     return this.apollo
-      .watchQuery<any>({
+      .query<any>({
         query: ME,
       })
-      .valueChanges.pipe(
+      .pipe(
         map(({ data }) => {
           return data.me;
+        }),
+      );
+  }
+  updateUser(userInfo: any) {
+    return this.apollo
+      .mutate<any>({
+        mutation: UPDATE_USER_INFO,
+        variables: {
+          userInfo,
+        },
+      })
+      .pipe(
+        map(({ data }) => {
+          return data.updateUser;
+        }),
+      );
+  }
+  findUserById(id) {
+    return this.apollo
+      .query<any>({
+        query: FIND_USER_BY_ID,
+        variables: {
+          id,
+        },
+      })
+      .pipe(
+        map(({ data }) => {
+          return data.findUserById;
         }),
       );
   }

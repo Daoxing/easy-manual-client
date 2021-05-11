@@ -58,8 +58,8 @@ export class EditingArticleComponent implements OnInit {
     }
 
     // set groups
-    this.userService.me().subscribe((me) => {
-      const { my_groups = [] } = me;
+    this.userService.me().subscribe((data) => {
+      const { my_groups = [] } = data;
       this.groupOptions = my_groups;
     });
   }

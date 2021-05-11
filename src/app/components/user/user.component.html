@@ -1,29 +1,68 @@
 <div class="main">
   <div id="user-info">
-    <i
-      class="fa fa-user user-logo black-color logo-frame-size-160 logo-icon-size-100"
-    ></i>
+    <div class="user-icon" *ngIf="userInfo.icon_url.length; else defaultIcon">
+      <img [src]="userInfo.icon_url" />
+    </div>
+    <ng-template #defaultIcon>
+      <div class="user-icon">
+        <i
+          class="fa fa-user user-logo black-color logo-frame-size-160 logo-icon-size-100"
+        ></i>
+      </div>
+    </ng-template>
+
     <div class="user-overview">
-      <span>Name</span>
-      <span>Name</span>
+      <span> {{ userInfo.user_nme }}</span>
+      <span>{{ userInfo.email_address }}</span>
+      <span>{{ userInfo.phone_nbr }}</span>
+      <span>{{ userInfo.gender }}</span>
+      <span *ngIf="userMode === 'me'">
+        <a href="/user/edit">Edit</a>
+      </span>
     </div>
   </div>
-  <div class="tab">
+  <div *ngIf="userMode === 'me'; else otherUser" class="tab">
     <div>
       <ul class="remove-ul-style tab-title-box">
         <li class="tab-title active-title" (click)="switchTab($event, 0)">
-          Joined Groups
+          Joined Groups ({{ myGroupsTotalCount }})
         </li>
         <li class="tab-title" (click)="switchTab($event, 1)">
-          Accessable Articles
+          Accessible Articles ({{ accessibleArticlesTotalCount }})
         </li>
-        <li class="tab-title" (click)="switchTab($event, 2)">My Articles</li>
+        <li class="tab-title" (click)="switchTab($event, 2)">
+          My Articles ({{ myArticlesTotalCount }})
+        </li>
       </ul>
     </div>
     <div class="tab-content-box">
-      <div class="tab-content active-content">content1</div>
-      <div class="tab-content">content2</div>
-      <div class="tab-content">content3</div>
+      <div class="tab-content active-content">
+        <app-group-list
+          [enableAction]="true"
+          (afterQueryGroups)="refreshArticleList($event)"
+        ></app-group-list>
+      </div>
+      <div class="tab-content">
+        <app-article-list
+          [listType]="'accessibleArticles'"
+          (afterQueryArticles)="refreshArticleList($event)"
+        ></app-article-list>
+      </div>
+      <div class="tab-content">
+        <app-article-list
+          [enableAction]="true"
+          [listType]="'myAllArticles'"
+          (afterQueryArticles)="refreshArticleList($event)"
+        ></app-article-list>
+      </div>
     </div>
   </div>
+  <ng-template #otherUser>
+    <div>
+      <app-article-list
+        [listType]="'userAllPublicArticles'"
+        (afterQueryArticles)="refreshArticleList($event)"
+      ></app-article-list>
+    </div>
+  </ng-template>
 </div>
