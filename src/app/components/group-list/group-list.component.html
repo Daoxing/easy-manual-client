@@ -1,0 +1,73 @@
+<div>
+  <ul class="remove-ul-style">
+    <li class="group-item group-item-title">
+      <span class="sort-button" (click)="sort('group_nme')">
+        Name
+        <i
+          [ngClass]="{
+            fa: true,
+            'fa-sort-up':
+              defaultSort.field === 'group_nme' && defaultSort.order === 'ASC',
+            'fa-sort': defaultSort.field !== 'group_nme',
+            'fa-sort-down':
+              defaultSort.field === 'group_nme' && defaultSort.order === 'DESC'
+          }"
+        >
+        </i>
+      </span>
+      <span class="sort-button" (click)="sort('created_tms')">
+        Creator
+        <i
+          [ngClass]="{
+            fa: true,
+            'fa-sort-up':
+              defaultSort.field === 'created_tms' &&
+              defaultSort.order === 'ASC',
+            'fa-sort': defaultSort.field !== 'created_tms',
+            'fa-sort-down':
+              defaultSort.field === 'created_tms' &&
+              defaultSort.order === 'DESC'
+          }"
+        ></i>
+      </span>
+      <span class="sort-button" (click)="sort('group_intro')"
+        >Group Intro
+        <i
+          [ngClass]="{
+            fa: true,
+            'fa-sort-up':
+              defaultSort.field === 'group_intro' &&
+              defaultSort.order === 'ASC',
+            'fa-sort': defaultSort.field !== 'group_intro',
+            'fa-sort-down':
+              defaultSort.field === 'group_intro' &&
+              defaultSort.order === 'DESC'
+          }"
+        >
+        </i>
+      </span>
+      <span *ngIf="enableAction">Action</span>
+    </li>
+
+    <li *ngFor="let group of groups" class="group-item">
+      <span
+        ><a href="/group?id={{ group.group_id }}">{{ group.group_nme }}</a>
+      </span>
+      <span
+        ><a href="/user?id={{ group.created_user.user_id }}">{{
+          group.created_user.user_nme
+        }}</a></span
+      >
+      <span>{{ group.group_intro || 'Not Provide' }}</span>
+      <span *ngIf="enableAction">
+        <button class="common-button">Leave</button>
+      </span>
+    </li>
+  </ul>
+  <div class="moreGroups" *ngIf="endOfGroups; else getMore">no more Groups</div>
+  <ng-template #getMore>
+    <div class="moreGroups" (click)="moreGroups()">
+      Get More <i class="fa fa-chevron-down"></i>
+    </div>
+  </ng-template>
+</div>

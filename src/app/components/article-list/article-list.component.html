@@ -1,0 +1,79 @@
+<div>
+  <ul class="remove-ul-style">
+    <li class="group-item group-item-title">
+      <span class="sort-button" (click)="sort('article_nme')">
+        Name
+        <i
+          [ngClass]="{
+            fa: true,
+            'fa-sort-up':
+              defaultSort.field === 'article_nme' &&
+              defaultSort.order === 'ASC',
+            'fa-sort': defaultSort.field !== 'article_nme',
+            'fa-sort-down':
+              defaultSort.field === 'article_nme' &&
+              defaultSort.order === 'DESC'
+          }"
+        >
+        </i>
+      </span>
+      <span class="sort-button" (click)="sort('created_tms')">
+        Creator
+        <i
+          [ngClass]="{
+            fa: true,
+            'fa-sort-up':
+              defaultSort.field === 'created_tms' &&
+              defaultSort.order === 'ASC',
+            'fa-sort': defaultSort.field !== 'created_tms',
+            'fa-sort-down':
+              defaultSort.field === 'created_tms' &&
+              defaultSort.order === 'DESC'
+          }"
+        ></i>
+      </span>
+      <span class="sort-button" (click)="sort('created_tms')"
+        >Created Time
+        <i
+          [ngClass]="{
+            fa: true,
+            'fa-sort-up':
+              defaultSort.field === 'created_tms' &&
+              defaultSort.order === 'ASC',
+            'fa-sort': defaultSort.field !== 'created_tms',
+            'fa-sort-down':
+              defaultSort.field === 'created_tms' &&
+              defaultSort.order === 'DESC'
+          }"
+        >
+        </i>
+      </span>
+      <span *ngIf="enableAction"> Action </span>
+    </li>
+
+    <li *ngFor="let article of articles" class="group-item">
+      <span
+        ><a href="/article?id={{ article.article_id }}">{{
+          article.article_nme
+        }}</a>
+      </span>
+      <span
+        ><a href="/user?id={{ article.article_id }}">{{
+          article.created_user.user_nme
+        }}</a></span
+      >
+      <span>{{ article.created_tms | date }}</span>
+      <span *ngIf="enableAction">
+        <button class="common-button">Delete</button>
+      </span>
+    </li>
+  </ul>
+  <div class="moreArticles" *ngIf="endOfArticles; else getMore">
+    No More Articles
+  </div>
+  <ng-template #getMore>
+    <div class="moreArticles" (click)="moreArticles()">
+      Get More<i class="fa fa-chevron-down"></i>
+    </div>
+  </ng-template>
+</div>

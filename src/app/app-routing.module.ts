@@ -8,12 +8,14 @@ import { UserComponent } from './components/user/user.component';
 import { GroupComponent } from './components/group/group.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ROUTER } from './constant';
+import { UpdateUserComponent } from './components/update-user/update-user.component';
 const routes: Routes = [
   { path: ROUTER.HOME_URL, component: HomeComponent },
   { path: ROUTER.ARTICLE, component: ArticleComponent },
   { path: ROUTER.EDIT_CREATE_URL, component: EditingArticleComponent },
   { path: ROUTER.CREATE_ARTICLE_URL, component: EditingArticleComponent },
   { path: ROUTER.USER_URL, component: UserComponent },
+  { path: ROUTER.USER_EDIT_URL, component: UpdateUserComponent },
   { path: ROUTER.GROUP_URL, component: GroupComponent },
   { path: ROUTER.PAGE_NOT_FOUND_URL, component: PageNotFoundComponent },
 ];

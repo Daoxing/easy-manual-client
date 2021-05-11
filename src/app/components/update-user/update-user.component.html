@@ -1,0 +1,82 @@
+<div class="main">
+  <div class="edit-user-logo">
+    <div *ngIf="iconURL.length; else defaultIcon">
+      <img class="logo-image" [src]="iconURL" />
+    </div>
+    <ng-template #defaultIcon>
+      <i
+        class="fa fa-user user-logo black-color logo-frame-size-160 logo-icon-size-100"
+      ></i>
+    </ng-template>
+  </div>
+  <div class="edit-user-info">
+    <div class="info-item">
+      <div class="item-title">Username:</div>
+      <div class="item-input">{{ username.value }}</div>
+    </div>
+    <div class="info-item">
+      <div class="item-title">Display Name:</div>
+      <div class="item-input">
+        <input
+          (keyup)="enableSubmit()"
+          [formControl]="displayName"
+          type="text"
+        />
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="item-title">Email:</div>
+      <div class="item-input">
+        <input (keyup)="enableSubmit()" [formControl]="email" type="email" />
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="item-title">Phone Number:</div>
+      <div class="item-input">
+        <input
+          (keyup)="enableSubmit()"
+          [formControl]="phoneNumber"
+          type="text"
+        />
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="item-title">Gender:</div>
+      <div class="item-input">
+        <div class="btn-group" dropdown (onHidden)="enableSubmit()">
+          <button
+            id="button-state-change"
+            dropdownToggle
+            type="button"
+            class="btn btn-primary dropdown-toggle"
+            aria-controls="dropdown-state-change"
+          >
+            {{ gender.value }} <span class="caret"></span>
+          </button>
+          <ul
+            id="dropdown-state-change"
+            *dropdownMenu
+            class="dropdown-menu"
+            role="menu"
+            aria-labelledby="button-state-change"
+          >
+            <li (click)="setGender('UNKNOWN')" class="dropdown-item">
+              Unknown
+            </li>
+            <li (click)="setGender('MALE')" class="dropdown-item">Male</li>
+            <li (click)="setGender('FEMALE')" class="dropdown-item">Female</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="submit-button">
+      <button
+        class="common-button"
+        [disabled]="!enableSubmitButton"
+        (click)="updateUser()"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</div>

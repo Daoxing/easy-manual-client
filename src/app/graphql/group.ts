@@ -16,3 +16,25 @@ export const CREATE_GROUP = gql`
     }
   }
 `;
+
+export const MY_JOINED_GROUPS = gql`
+  query joinedGroups($sort: Order, $page: Pagination) {
+    joinedGroups(sort: $sort, page: $page) {
+      totalCount
+      groups {
+        group_nme
+        created_user {
+          user_id
+          user_nme
+        }
+        created_tms
+        group_id
+        group_intro
+      }
+      page {
+        pageNo
+        pageCount
+      }
+    }
+  }
+`;

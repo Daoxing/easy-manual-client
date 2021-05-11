@@ -53,3 +53,66 @@ export const UPDATE_ARTICLE = gql`
     }
   }
 `;
+
+export const GET_ACCESSIBLE_ARTICLES = gql`
+  query getUsersAccessibleArticles($sort: Order, $page: Pagination) {
+    getUsersAccessibleArticles(sort: $sort, page: $page) {
+      totalCount
+      articles {
+        article_nme
+        created_user {
+          user_id
+          user_nme
+        }
+        created_tms
+        article_id
+      }
+      page {
+        pageNo
+        pageCount
+      }
+    }
+  }
+`;
+
+export const GET_MY_ALL_ARTICLES = gql`
+  query getUsersAllArticles($sort: Order, $page: Pagination) {
+    getUsersAllArticles(sort: $sort, page: $page) {
+      totalCount
+      articles {
+        article_nme
+        created_user {
+          user_id
+          user_nme
+        }
+        created_tms
+        article_id
+      }
+      page {
+        pageNo
+        pageCount
+      }
+    }
+  }
+`;
+
+export const GET_USER_ALL_PUBLIC_ARTICLES = gql`
+  query getUsersAllPublicArticles($sort: Order, $page: Pagination) {
+    getUsersAllPublicArticles(sort: $sort, page: $page) {
+      totalCount
+      articles {
+        article_nme
+        created_user {
+          user_id
+          user_nme
+        }
+        created_tms
+        article_id
+      }
+      page {
+        pageNo
+        pageCount
+      }
+    }
+  }
+`;
