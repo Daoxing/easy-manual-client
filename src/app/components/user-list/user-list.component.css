@@ -1,32 +1,11 @@
-.tab-title-box {
-  display: flex;
-}
-.tab-title-box li {
-  cursor: pointer;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-right: 16px;
-  padding-left: 4px;
-}
-
-.active-title {
-  border-bottom: 3px solid #1976d2;
-}
-
-.tab-content {
-  display: none;
-}
-.active-content {
-  display: block;
-}
-
 .members {
+  display: flex;
   flex-wrap: wrap;
 }
-.members a,
-.members a:visited,
-.members a:focus,
-.members a:active {
+.member a,
+.member a:visited,
+.member a:focus,
+.member a:active {
   color: #000000;
   display: flex;
   max-width: 120px;
@@ -49,6 +28,7 @@
   margin: 0 auto;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 .member-name {
   width: 100px;
@@ -59,15 +39,6 @@
   margin: 0 auto;
 }
 
-.logo-frame-size-40 {
-  height: 40px;
-  width: 40px;
-}
-
-.logo-icon-size-32 {
-  font-size: 32px;
-}
-
 .articles a,
 .articles a:visited,
 .articles a:focus,
@@ -75,9 +46,13 @@
   color: #000000;
   display: block;
 }
-.group-title {
-  margin-top: 20px;
+.no-joined-user {
+  text-align: center;
 }
-.group-intro {
-  border-bottom: 3px solid #dbdbdb;
+.add-new-user {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }

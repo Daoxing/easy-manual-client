@@ -116,3 +116,24 @@ export const GET_USER_ALL_PUBLIC_ARTICLES = gql`
     }
   }
 `;
+
+export const GET_ARTICLES_IN_GROUP = gql`
+  query getArticlesInGroup($group_id: ID!, $sort: Order, $page: Pagination) {
+    getArticlesInGroup(group_id: $group_id, sort: $sort, page: $page) {
+      totalCount
+      articles {
+        article_nme
+        created_user {
+          user_id
+          user_nme
+        }
+        created_tms
+        article_id
+      }
+      page {
+        pageNo
+        pageCount
+      }
+    }
+  }
+`;

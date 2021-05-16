@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import { FIND_USER_BY_ID, ME, UPDATE_USER_INFO, VERIFY_CODE } from '../graphql';
+import {
+  FIND_USER_BY_ID,
+  GET_USERS_IN_GROUP,
+  ME,
+  UPDATE_USER_INFO,
+  VERIFY_CODE,
+} from '../graphql';
 import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
@@ -57,6 +63,22 @@ export class UserService {
       .pipe(
         map(({ data }) => {
           return data.findUserById;
+        }),
+      );
+  }
+  usersInGroup(group_id, page, sort) {
+    return this.apollo
+      .query<any>({
+        query: GET_USERS_IN_GROUP,
+        variables: {
+          group_id,
+          page,
+          sort,
+        },
+      })
+      .pipe(
+        map(({ data }) => {
+          return data.usersInGroup;
         }),
       );
   }

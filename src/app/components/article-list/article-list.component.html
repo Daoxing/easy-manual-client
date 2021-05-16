@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="articles.length; else noArticles">
   <ul class="remove-ul-style">
     <li class="group-item group-item-title">
       <span class="sort-button" (click)="sort('article_nme')">
@@ -77,3 +77,4 @@
     </div>
   </ng-template>
 </div>
+<ng-template #noArticles><div>NO ARTICLES!</div> </ng-template>

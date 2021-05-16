@@ -10,6 +10,7 @@ export class ArticleListComponent implements OnInit {
   articles: any[] = [];
   @Input() enableAction: boolean = false;
   @Input() listType: string = '';
+  @Input() groupId: string = '';
   @Output() afterQueryArticles: EventEmitter<any> = new EventEmitter();
   totalCount: number = 0;
   endOfArticles: boolean = false;
@@ -89,6 +90,24 @@ export class ArticleListComponent implements OnInit {
             });
         }
         break;
+      case 'articlesInGroup':
+        {
+          if (this.groupId.length) {
+            this.articleService
+              .getAllArticlesInGroup(
+                this.groupId,
+                this.defaultPage,
+                this.defaultSort,
+              )
+              .subscribe((data) => {
+                this.articles = data.articles;
+                this.totalCount = data.totalCount;
+                this.endOfArticles = this.checkEndOfArticles(data.articles);
+                this.afterQueryArticlesEmit();
+              });
+          }
+        }
+        break;
       default:
         break;
     }
@@ -130,6 +149,24 @@ export class ArticleListComponent implements OnInit {
               this.endOfArticles = this.checkEndOfArticles(data.articles);
               this.afterQueryArticlesEmit();
             });
+        }
+        break;
+      case 'articlesInGroup':
+        {
+          if (this.groupId.length) {
+            this.articleService
+              .getAllArticlesInGroup(
+                this.groupId,
+                this.defaultPage,
+                this.defaultSort,
+              )
+              .subscribe((data) => {
+                this.articles = this.articles.concat(data.articles);
+                this.totalCount = data.totalCount;
+                this.endOfArticles = this.checkEndOfArticles(data.articles);
+                this.afterQueryArticlesEmit();
+              });
+          }
         }
         break;
       default:
