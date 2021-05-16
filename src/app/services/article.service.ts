@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import {
   CREATE_ARTICLE,
   GET_ACCESSIBLE_ARTICLES,
+  GET_ARTICLES_IN_GROUP,
   GET_MY_ALL_ARTICLES,
   GET_USER_ALL_PUBLIC_ARTICLES,
   QUERY_ARTICLE,
@@ -96,6 +97,23 @@ export class ArticleService {
       .pipe(
         map(({ data }) => {
           return data.getUsersAllPublicArticles;
+        }),
+      );
+  }
+
+  getAllArticlesInGroup(group_id, page, sort) {
+    return this.apollo
+      .query<any>({
+        query: GET_ARTICLES_IN_GROUP,
+        variables: {
+          group_id,
+          page,
+          sort,
+        },
+      })
+      .pipe(
+        map(({ data }) => {
+          return data.getArticlesInGroup;
         }),
       );
   }

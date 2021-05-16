@@ -26,7 +26,6 @@ export const ME = gql`
       icon_url
       gender
       my_groups {
-        article_count
         group_id
         group_nme
         created_user {
@@ -62,6 +61,26 @@ export const FIND_USER_BY_ID = gql`
         phone_nbr
         icon_url
         gender
+      }
+    }
+  }
+`;
+
+export const GET_USERS_IN_GROUP = gql`
+  query usersInGroup($group_id: ID!, $sort: Order, $page: Pagination) {
+    usersInGroup(group_id: $group_id, sort: $sort, page: $page) {
+      totalCount
+      users {
+        user_id
+        user_nme
+        email_address
+        phone_nbr
+        icon_url
+        gender
+      }
+      page {
+        pageNo
+        pageCount
       }
     }
   }

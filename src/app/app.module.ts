@@ -28,6 +28,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ArticleListComponent } from './components/article-list/article-list.component';
 import { IconComponent } from './components/icon/icon.component';
 import { GroupListComponent } from './components/group-list/group-list.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +48,8 @@ import { GroupListComponent } from './components/group-list/group-list.component
     ArticleListComponent,
     IconComponent,
     GroupListComponent,
+    FooterComponent,
+    UserListComponent,
   ],
   imports: [
     BrowserModule,

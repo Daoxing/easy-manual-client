@@ -1,4 +1,5 @@
 export * from './article';
+export * from './group';
 export interface IOrder {
   field: string;
   order: 'ASC' | 'DESC';

@@ -1,0 +1,23 @@
+<div class="members" *ngIf="users.length; else emptyUser">
+  <div class="member add-new-user">
+    <i class="fa fa-user-plus logo-frame-size-40 logo-icon-size-32"></i>
+  </div>
+
+  <div class="member" *ngFor="let user of users">
+    <a href="/user?id={{ user.user_id }}"
+      ><i
+        class="fa fa-user logo-frame-size-40 logo-icon-size-32 member-icon"
+      ></i>
+      <span class="member-name">{{ user.user_nme }}</span>
+    </a>
+  </div>
+
+  <div *ngIf="!endOfUsers" class="member add-new-user" (click)="moreUsers()">
+    <i class="fa fa-users logo-frame-size-40 logo-icon-size-32"></i>
+    <span class="member-name">Load More</span>
+  </div>
+</div>
+
+<ng-template #emptyUser>
+  <div class="no-joined-user"><button>Add</button> No User Joined!</div>
+</ng-template>

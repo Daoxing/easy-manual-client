@@ -1,46 +1,49 @@
 <div class="main">
   <div class="group-title">
-    <h3>group title</h3>
+    <h3>{{ theGroup.group_nme }}</h3>
   </div>
 
-  <div class="group-intro"><p></p></div>
+  <div class="group-intro">
+    <p>{{ theGroup.group_intro }}</p>
+  </div>
 
-  <div class="tab">
+  <div *ngIf="joinedStatus === 'JOINED'" class="tab">
     <div>
       <ul class="remove-ul-style tab-title-box">
         <li class="tab-title active-title" (click)="switchTab($event, 0)">
-          Groups Members
+          Groups Members ({{ usersCountInGroup }})
         </li>
         <li class="tab-title" (click)="switchTab($event, 1)">
-          Articles in Group
+          Articles in Group ({{ articlesInGroup }})
         </li>
       </ul>
     </div>
     <div class="tab-content-box">
-      <div class="tab-content active-content members" name="members">
-        <div class="tab-toolbar"></div>
-        <div *ngIf="users.length; else emptyUser">
-          <div class="member" *ngFor="let user of users">
-            <a href="/user?id=article"
-              ><i
-                class="fa fa-user logo-frame-size-40 logo-icon-size-32 member-icon"
-              ></i>
-              <span class="member-name">{{ user }}</span>
-            </a>
-          </div>
-        </div>
-        <ng-template #emptyUser> <p>No User Joined!</p></ng-template>
+      <div class="tab-content active-content" name="members">
+        <app-user-list
+          [groupId]="groupId"
+          [isCreator]="amICreator"
+          (afterQueryUsers)="refreshAfterQueryList($event)"
+        ></app-user-list>
       </div>
 
-      <div class="tab-content articles" name="articles">
-        <div class="tab-toolbar"></div>
-        <ul *ngIf="articles.length; else emptyArticle" class="remove-ul-style">
-          <li *ngFor="let article of articles">
-            <a href="/article?id=article">{{ article }} </a>
-          </li>
-        </ul>
-        <ng-template #emptyArticle> <p>No Articles Created!</p></ng-template>
+      <div class="tab-content" name="articles">
+        <app-article-list
+          [groupId]="groupId"
+          [enableAction]="false"
+          [listType]="'articlesInGroup'"
+          (afterQueryArticles)="refreshAfterQueryList($event)"
+        ></app-article-list>
       </div>
     </div>
+  </div>
+
+  <div *ngIf="joinedStatus === 'APPLIED'">
+    You have applied join this group, waiting for approved. If you want to
+    cancel, please <button class="common-button">click here</button> to join.
+  </div>
+  <div *ngIf="joinedStatus === 'NOT_JOINED'">
+    You have not joined the group
+    <button class="common-button">click here</button>
   </div>
 </div>
