@@ -4,6 +4,7 @@ import { Apollo } from 'apollo-angular';
 import { map } from 'rxjs/operators';
 import {
   CREATE_ARTICLE,
+  DELETE_ARTICLE,
   GET_ACCESSIBLE_ARTICLES,
   GET_ARTICLES_IN_GROUP,
   GET_MY_ALL_ARTICLES,
@@ -53,6 +54,18 @@ export class ArticleService {
       })
       .pipe(map(({ data }) => data.updateArticle));
   }
+
+  deleteArticle(articleId: string) {
+    return this.apollo
+      .mutate<any>({
+        mutation: DELETE_ARTICLE,
+        variables: {
+          articleId,
+        },
+      })
+      .pipe(map(({ data }) => data.deleteArticle));
+  }
+
   getAccessibleArticles(page, sort) {
     return this.apollo
       .query<any>({

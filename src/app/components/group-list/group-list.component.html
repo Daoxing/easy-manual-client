@@ -54,13 +54,20 @@
         ><a href="/group?id={{ group.group_id }}">{{ group.group_nme }}</a>
       </span>
       <span
-        ><a href="/user?id={{ group.created_user.user_id }}">{{
-          group.created_user.user_nme
-        }}</a></span
+        ><a href="/user?id={{ group.created_user.user_id }}">
+          <app-icon [iconURL]="group.created_user.icon_url"></app-icon>
+
+          {{ group.created_user.user_nme }}
+        </a></span
       >
       <span>{{ group.group_intro || 'Not Provide' }}</span>
       <span *ngIf="enableAction">
-        <button class="common-button">Leave</button>
+        <button
+          (click)="leaveGroup(group.group_id, group.group_nme)"
+          class="common-button"
+        >
+          Leave
+        </button>
       </span>
     </li>
   </ul>

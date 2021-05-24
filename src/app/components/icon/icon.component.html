@@ -1,1 +1,6 @@
-<p>icon works!</p>
+<div *ngIf="iconURL.length; else defaultUser">
+  <img [src]="iconURL" />
+</div>
+<ng-template #defaultUser>
+  <div><i class="fa fa-user"> </i></div>
+</ng-template>

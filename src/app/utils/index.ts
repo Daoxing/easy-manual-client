@@ -10,3 +10,15 @@ export function getDiff(oldItem, newItem) {
   });
   return result;
 }
+
+export function closeModal(bsModal: {
+  setClass: (newClass: string) => void;
+  hide: () => void;
+}) {
+  return new Promise<void>((resolve) => {
+    if (bsModal && bsModal.setClass && bsModal.hide) {
+      bsModal.hide();
+    }
+    resolve();
+  });
+}

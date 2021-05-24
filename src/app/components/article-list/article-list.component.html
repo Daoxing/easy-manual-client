@@ -58,13 +58,19 @@
         }}</a>
       </span>
       <span
-        ><a href="/user?id={{ article.article_id }}">{{
-          article.created_user.user_nme
-        }}</a></span
+        ><a href="/user?id={{ article.article_id }}">
+          <app-icon [iconURL]="article.created_user.icon_url"></app-icon>
+          {{ article.created_user.user_nme }}</a
+        ></span
       >
       <span>{{ article.created_tms | date }}</span>
       <span *ngIf="enableAction">
-        <button class="common-button">Delete</button>
+        <button
+          class="common-button"
+          (click)="deleteArticle(article.article_id)"
+        >
+          Delete
+        </button>
       </span>
     </li>
   </ul>

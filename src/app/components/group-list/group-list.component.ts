@@ -1,5 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { ToastrService } from 'ngx-toastr';
 import { GroupService } from 'src/app/services';
+import { closeModal } from 'src/app/utils';
+import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-group-list',
@@ -22,7 +26,11 @@ export class GroupListComponent implements OnInit {
     pageCount: 10,
   };
 
-  constructor(private groupService: GroupService) {}
+  constructor(
+    private groupService: GroupService,
+    private toastr: ToastrService,
+    private modalService: BsModalService,
+  ) {}
 
   ngOnInit(): void {
     this.initQueryGroups();
@@ -43,6 +51,33 @@ export class GroupListComponent implements OnInit {
     this.defaultPage.pageNo = this.defaultPage.pageNo + 1;
     this.getMoreGroups();
   }
+
+  async leaveGroup(groupId: string, groupName: string) {
+    let ref;
+    const confirm = await new Promise<boolean>((resolve, reject) => {
+      ref = this.modalService.show(ConfirmModalComponent, {
+        initialState: {
+          title: 'Leave Group',
+          content: `Do you want to leave the group?`,
+          onCancel: () => resolve(false),
+          onSubmit: () => resolve(true),
+        },
+      });
+    });
+
+    if (confirm) {
+      this.groupService.leaveGroup(groupId).subscribe((data) => {
+        const { success } = data;
+        if (success) {
+          this.groups = this.groups.filter((g) => g.group_id != groupId);
+          return;
+        }
+        this.toastr.error('Something went wrong!');
+      });
+    }
+    await closeModal(ref);
+  }
+
   private checkEndOfGroups(groups: any[]) {
     return (
       this.totalCount <=
