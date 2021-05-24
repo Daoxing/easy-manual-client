@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { map } from 'rxjs/operators';
-import { CREATE_GROUP, GROUP_INFO, MY_JOINED_GROUPS } from '../graphql';
+import {
+  CREATE_GROUP,
+  GROUP_INFO,
+  LEAVE_GROUP,
+  MY_JOINED_GROUPS,
+} from '../graphql';
 
 @Injectable({
   providedIn: 'root',
@@ -50,6 +55,20 @@ export class GroupService {
       .pipe(
         map(({ data }) => {
           return data.groupInfo;
+        }),
+      );
+  }
+  leaveGroup(group_id: string) {
+    return this.apollo
+      .mutate<any>({
+        mutation: LEAVE_GROUP,
+        variables: {
+          group_id,
+        },
+      })
+      .pipe(
+        map(({ data }) => {
+          return data.leaveGroup;
         }),
       );
   }

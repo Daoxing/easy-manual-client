@@ -11,7 +11,7 @@ import { LoginModalComponent } from '../.';
 })
 export class HeaderComponent implements OnInit {
   modalRef: BsModalRef;
-  userLogin: any;
+  userLogin: boolean;
   iconURL: string = '';
   constructor(
     private modalService: BsModalService,

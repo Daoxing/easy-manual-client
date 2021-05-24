@@ -30,6 +30,7 @@ import { IconComponent } from './components/icon/icon.component';
 import { GroupListComponent } from './components/group-list/group-list.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +51,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
     GroupListComponent,
     FooterComponent,
     UserListComponent,
+    ConfirmModalComponent,
   ],
   imports: [
     BrowserModule,

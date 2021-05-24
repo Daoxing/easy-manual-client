@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prettier": "prettier --write ./src/**.ts ./src/**/**.ts ./src/**.html ./src/**/**.html ./src/**.css ./src/**/**.css"
+    "prettier": "prettier --write ./src/**.ts ./src/**/**.ts ./src/**.html ./src/**/**.html ./src/**.css ./src/**/**.css",
+    "precommit":"yarn prettier"
   },
   "repository": {
     "type": "git",
@@ -63,5 +64,10 @@
   },
   "optionalDependencies": {
     "fsevents": "*"
+  },
+  "husky":{
+    "hooks":{
+      "pre-commit":"yarn run precommit"
+    }
   }
 }

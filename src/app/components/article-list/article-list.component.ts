@@ -1,5 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { ToastrService } from 'ngx-toastr';
 import { ArticleService } from 'src/app/services';
+import { closeModal } from 'src/app/utils';
+import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-article-list',
@@ -24,7 +28,11 @@ export class ArticleListComponent implements OnInit {
     pageCount: 10,
   };
 
-  constructor(private articleService: ArticleService) {}
+  constructor(
+    private articleService: ArticleService,
+    private toastr: ToastrService,
+    private modalService: BsModalService,
+  ) {}
 
   ngOnInit(): void {
     this.initQueryArticles();
@@ -44,6 +52,34 @@ export class ArticleListComponent implements OnInit {
   moreArticles() {
     this.defaultPage.pageNo = this.defaultPage.pageNo + 1;
     this.getMoreArticles();
+  }
+  async deleteArticle(articleId: string) {
+    let ref;
+    const confirm = await new Promise<boolean>((resolve, reject) => {
+      ref = this.modalService.show(ConfirmModalComponent, {
+        initialState: {
+          title: 'Leave Group',
+          content: `Do you want to delete the article?`,
+          onCancel: () => resolve(false),
+          onSubmit: () => resolve(true),
+        },
+      });
+    });
+
+    if (confirm) {
+      this.articleService.deleteArticle(articleId).subscribe((data) => {
+        const { success, message } = data;
+        if (success) {
+          this.articles = this.articles.filter(
+            (a) => a.article_id != articleId,
+          );
+          return;
+        }
+        const msg = message ? message : 'Something went wrong!';
+        this.toastr.error(msg);
+      });
+    }
+    await closeModal(ref);
   }
   private checkEndOfArticles(articles: any[]) {
     return (

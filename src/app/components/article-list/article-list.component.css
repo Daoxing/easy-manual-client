@@ -11,6 +11,13 @@
   text-overflow: ellipsis;
   flex: 1;
 }
+.group-item span a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .sort-button {
   cursor: pointer;
 }

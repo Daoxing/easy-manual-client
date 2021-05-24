@@ -15,7 +15,7 @@ export const CREATE_ARTICLE = gql`
 `;
 
 export const QUERY_ARTICLE = gql`
-  query getArticle($articleId: String!) {
+  query getArticle($articleId: ID!) {
     getArticle(articleId: $articleId) {
       success
       message
@@ -54,6 +54,19 @@ export const UPDATE_ARTICLE = gql`
   }
 `;
 
+export const DELETE_ARTICLE = gql`
+  mutation deleteArticle($articleId: ID!) {
+    deleteArticle(articleId: $articleId) {
+      success
+      message
+      result {
+        article_id
+        article_nme
+      }
+    }
+  }
+`;
+
 export const GET_ACCESSIBLE_ARTICLES = gql`
   query getUsersAccessibleArticles($sort: Order, $page: Pagination) {
     getUsersAccessibleArticles(sort: $sort, page: $page) {
@@ -63,6 +76,7 @@ export const GET_ACCESSIBLE_ARTICLES = gql`
         created_user {
           user_id
           user_nme
+          icon_url
         }
         created_tms
         article_id
@@ -84,6 +98,7 @@ export const GET_MY_ALL_ARTICLES = gql`
         created_user {
           user_id
           user_nme
+          icon_url
         }
         created_tms
         article_id
@@ -105,6 +120,7 @@ export const GET_USER_ALL_PUBLIC_ARTICLES = gql`
         created_user {
           user_id
           user_nme
+          icon_url
         }
         created_tms
         article_id
@@ -126,6 +142,7 @@ export const GET_ARTICLES_IN_GROUP = gql`
         created_user {
           user_id
           user_nme
+          icon_url
         }
         created_tms
         article_id
