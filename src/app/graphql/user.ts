@@ -11,6 +11,7 @@ export const VERIFY_CODE = gql`
         phone_nbr
         icon_url
         gender
+        onboard
       }
     }
   }
@@ -21,6 +22,7 @@ export const ME = gql`
     me {
       user_id
       user_nme
+      display_nme
       email_address
       phone_nbr
       icon_url

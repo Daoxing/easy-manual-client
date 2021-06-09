@@ -41,7 +41,12 @@
     <div class="article-action">
       <i
         (click)="markArticle()"
-        class="cursor-pointer black-color fa fa-bookmark user-logo logo-frame-size-40 logo-icon-size-32"
+        class=""
+        [ngClass]="
+          bookmarked
+            ? 'cursor-pointer black-color  fa fa-bookmark user-logo logo-frame-size-40 logo-icon-size-32'
+            : 'cursor-pointer black-color  fa fa-bookmark-o user-logo logo-frame-size-40 logo-icon-size-32'
+        "
       ></i>
       <a
         *ngIf="editable"

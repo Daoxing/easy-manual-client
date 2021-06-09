@@ -4,20 +4,49 @@
   </span>
   <div class="spacer"></div>
 
-  <div (click)="popUserOptions()">
-    <i
+  <div>
+    <button
+      (click)="popUserOptions()"
       *ngIf="!userLogin; else loginUser"
-      class="fa fa-user user-logo logo-frame-size-40 logo-icon-size-32"
-    ></i>
+      class="common-button"
+    >
+      Login
+    </button>
     <ng-template #loginUser>
-      <div *ngIf="iconURL.length; else defaultIcon">
-        <img class="logo-image" [src]="iconURL" />
+      <div id="theDropdown" dropdown>
+        <div
+          dropdownToggle
+          aria-controls="dropdown-basic"
+          *ngIf="iconURL.length; else defaultIcon"
+        >
+          <img class="logo-image" [src]="iconURL" />
+        </div>
+        <ng-template #defaultIcon>
+          <i
+            dropdownToggle
+            class="dropdown-toggle"
+            aria-controls="dropdown-basic"
+            class="fa fa-user user-logo logo-frame-size-40 logo-icon-size-32"
+          ></i>
+        </ng-template>
+        <ul
+          id="dropdown-basic"
+          *dropdownMenu
+          class="dropdown-menu dropdown-menu-right"
+        >
+          <li role="menuitem">
+            <a class="dropdown-item" href="/user"
+              >Profile <i class="fa fa-user-circle-o"></i
+            ></a>
+          </li>
+          <li class="divider dropdown-divider"></li>
+          <li role="menuitem" (click)="logout()">
+            <a class="dropdown-item" href="#"
+              >Log out <i class="fa fa-sign-out"></i
+            ></a>
+          </li>
+        </ul>
       </div>
-      <ng-template #defaultIcon>
-        <i
-          class="fa fa-user user-logo logo-frame-size-40 logo-icon-size-32"
-        ></i>
-      </ng-template>
     </ng-template>
   </div>
 </div>

@@ -1,4 +1,4 @@
-<div *ngIf="iconURL.length; else defaultUser">
+<div *ngIf="iconURL && iconURL.length; else defaultUser">
   <img [src]="iconURL" />
 </div>
 <ng-template #defaultUser>

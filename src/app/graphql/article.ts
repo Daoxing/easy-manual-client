@@ -30,12 +30,14 @@ export const QUERY_ARTICLE = gql`
           user_id
           user_nme
           icon_url
+          display_nme
         }
         group {
           group_id
           group_nme
         }
         editable
+        bookmarked
       }
     }
   }
@@ -44,6 +46,32 @@ export const QUERY_ARTICLE = gql`
 export const UPDATE_ARTICLE = gql`
   mutation updateArticle($articleInfo: updateArticleInput) {
     updateArticle(articleInfo: $articleInfo) {
+      success
+      message
+      result {
+        article_id
+        article_nme
+      }
+    }
+  }
+`;
+
+export const BOOKMARK_ARTICLE = gql`
+  mutation bookmarkArticle($articleId: ID!) {
+    bookmarkArticle(articleId: $articleId) {
+      success
+      message
+      result {
+        article_id
+        article_nme
+      }
+    }
+  }
+`;
+
+export const REMOVE_BOOKMARK_ARTICLE = gql`
+  mutation removeArticleBookmark($articleId: ID!) {
+    removeArticleBookmark(articleId: $articleId) {
       success
       message
       result {
@@ -77,6 +105,7 @@ export const GET_ACCESSIBLE_ARTICLES = gql`
           user_id
           user_nme
           icon_url
+          display_nme
         }
         created_tms
         article_id
@@ -99,6 +128,7 @@ export const GET_MY_ALL_ARTICLES = gql`
           user_id
           user_nme
           icon_url
+          display_nme
         }
         created_tms
         article_id
@@ -121,6 +151,7 @@ export const GET_USER_ALL_PUBLIC_ARTICLES = gql`
           user_id
           user_nme
           icon_url
+          display_nme
         }
         created_tms
         article_id
@@ -142,6 +173,30 @@ export const GET_ARTICLES_IN_GROUP = gql`
         created_user {
           user_id
           user_nme
+          display_nme
+          icon_url
+        }
+        created_tms
+        article_id
+      }
+      page {
+        pageNo
+        pageCount
+      }
+    }
+  }
+`;
+
+export const BOOKMARKED_ARTICLES = gql`
+  query bookmarkedArticles($sort: Order, $page: Pagination) {
+    bookmarkedArticles(sort: $sort, page: $page) {
+      totalCount
+      articles {
+        article_nme
+        created_user {
+          user_id
+          user_nme
+          display_nme
           icon_url
         }
         created_tms

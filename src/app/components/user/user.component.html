@@ -1,6 +1,6 @@
 <div class="main">
   <div id="user-info">
-    <div class="user-icon" *ngIf="userInfo.icon_url.length; else defaultIcon">
+    <div class="user-icon" *ngIf="userInfo.icon_url; else defaultIcon">
       <img [src]="userInfo.icon_url" />
     </div>
     <ng-template #defaultIcon>
@@ -33,6 +33,9 @@
         <li class="tab-title" (click)="switchTab($event, 2)">
           My Articles ({{ myArticlesTotalCount }})
         </li>
+        <li class="tab-title" (click)="switchTab($event, 3)">
+          Saved Articles ({{ mySavedArticlesTotalCount }})
+        </li>
       </ul>
     </div>
     <div class="tab-content-box">
@@ -52,6 +55,12 @@
         <app-article-list
           [enableAction]="true"
           [listType]="'myAllArticles'"
+          (afterQueryArticles)="refreshArticleList($event)"
+        ></app-article-list>
+      </div>
+      <div class="tab-content">
+        <app-article-list
+          [listType]="'mySavedArticles'"
           (afterQueryArticles)="refreshArticleList($event)"
         ></app-article-list>
       </div>

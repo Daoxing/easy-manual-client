@@ -15,17 +15,17 @@
         >
         </i>
       </span>
-      <span class="sort-button" (click)="sort('created_tms')">
+      <span class="sort-button" (click)="sort('display_nme')">
         Creator
         <i
           [ngClass]="{
             fa: true,
             'fa-sort-up':
-              defaultSort.field === 'created_tms' &&
+              defaultSort.field === 'display_nme' &&
               defaultSort.order === 'ASC',
-            'fa-sort': defaultSort.field !== 'created_tms',
+            'fa-sort': defaultSort.field !== 'display_nme',
             'fa-sort-down':
-              defaultSort.field === 'created_tms' &&
+              defaultSort.field === 'display_nme' &&
               defaultSort.order === 'DESC'
           }"
         ></i>
@@ -57,7 +57,7 @@
         ><a href="/user?id={{ group.created_user.user_id }}">
           <app-icon [iconURL]="group.created_user.icon_url"></app-icon>
 
-          {{ group.created_user.user_nme }}
+          {{ group.created_user.display_nme }}
         </a></span
       >
       <span>{{ group.group_intro || 'Not Provide' }}</span>
