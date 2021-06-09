@@ -27,6 +27,10 @@
 <ng-template #step2>
   <div class="login-modal-box">
     <div>
+      We have sent {{ account.value }} the code, please input the code we sent
+      to you to login
+    </div>
+    <div>
       <label> Code: </label>
       <input
         type="text"
@@ -34,6 +38,13 @@
         placeholder="Code"
         (focus)="focusClear()"
       />
+      <button
+        class="common-button"
+        (click)="resendCode()"
+        [disabled]="hasSendCode"
+      >
+        Resend Code <span *ngIf="hasSendCode">({{ counter }}s) </span>
+      </button>
     </div>
 
     <button
@@ -43,6 +54,7 @@
     >
       Verify
     </button>
+    <button class="common-button" (click)="backToLogin()">Back</button>
     <div *ngIf="message" class="error">
       {{ message }}
     </div>

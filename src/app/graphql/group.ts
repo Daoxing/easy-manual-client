@@ -28,6 +28,7 @@ export const MY_JOINED_GROUPS = gql`
           user_id
           user_nme
           icon_url
+          display_nme
         }
         created_tms
         group_id

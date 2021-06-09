@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import _ from 'lodash';
+import { ToastrService } from 'ngx-toastr';
 import { PRIVATE_GROUP, PUBLIC_GROUP, ROUTER } from 'src/app/constant';
 import { ArticleService, UserService } from 'src/app/services';
 
@@ -19,13 +20,14 @@ export class ArticleComponent implements OnInit {
   groupName: string = '';
   iconURL: string = '';
   editable: boolean = false;
+  bookmarked: boolean = false;
   success: boolean = false;
   hasGroup: boolean = false;
   constructor(
     private articleService: ArticleService,
-    private userService: UserService,
     private router: ActivatedRoute,
     private route: Router,
+    private toastr: ToastrService,
   ) {}
 
   ngOnInit(): void {
@@ -33,6 +35,18 @@ export class ArticleComponent implements OnInit {
   }
   markArticle() {
     // mark article
+    const theService = this.bookmarked
+      ? this.articleService.bookmarkArticle(this.articleId)
+      : this.articleService.removeArticleBookmark(this.articleId);
+    theService.subscribe(({ success }) => {
+      if (success) {
+        this.bookmarked = !this.bookmarked;
+        const msg = this.bookmarked ? 'Save Success' : 'Remove Success';
+        this.toastr.success(msg);
+        return;
+      }
+      this.toastr.error('Something went wrong!');
+    });
   }
 
   private queryArticle() {
@@ -65,6 +79,7 @@ export class ArticleComponent implements OnInit {
             this.groupName = group.group_nme;
             // set edit button
             this.editable = result.editable;
+            this.bookmarked = result.bookmarked;
             this.success = success;
             return;
           }

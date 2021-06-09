@@ -144,6 +144,18 @@ export class ArticleListComponent implements OnInit {
           }
         }
         break;
+      case 'mySavedArticles':
+        {
+          this.articleService
+            .bookmarkedArticles(this.defaultPage, this.defaultSort)
+            .subscribe((data) => {
+              this.articles = data.articles;
+              this.totalCount = data.totalCount;
+              this.endOfArticles = this.checkEndOfArticles(data.articles);
+              this.afterQueryArticlesEmit();
+            });
+        }
+        break;
       default:
         break;
     }
@@ -203,6 +215,18 @@ export class ArticleListComponent implements OnInit {
                 this.afterQueryArticlesEmit();
               });
           }
+        }
+        break;
+      case 'mySavedArticles':
+        {
+          this.articleService
+            .bookmarkedArticles(this.defaultPage, this.defaultSort)
+            .subscribe((data) => {
+              this.articles = this.articles.concat(data.articles);
+              this.totalCount = data.totalCount;
+              this.endOfArticles = this.checkEndOfArticles(data.articles);
+              this.afterQueryArticlesEmit();
+            });
         }
         break;
       default:

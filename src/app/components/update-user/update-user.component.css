@@ -3,6 +3,10 @@
   justify-content: center;
   margin-top: 20px;
 }
+.edit-photo-button {
+  margin-top: 20px;
+  text-align: center;
+}
 .logo-image {
   width: 160px;
   height: 160px;

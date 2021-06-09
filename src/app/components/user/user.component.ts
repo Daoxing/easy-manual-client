@@ -20,6 +20,7 @@ export class UserComponent implements OnInit {
   accessibleArticlesTotalCount = 0;
   myArticlesTotalCount = 0;
   myGroupsTotalCount = 0;
+  mySavedArticlesTotalCount = 0;
   constructor(
     private elemRef: ElementRef,
     private router: ActivatedRoute,
@@ -99,6 +100,9 @@ export class UserComponent implements OnInit {
     }
     if (listType === 'myGroups') {
       this.myGroupsTotalCount = totalCount;
+    }
+    if (listType === 'mySavedArticles') {
+      this.mySavedArticlesTotalCount = totalCount;
     }
   }
 }

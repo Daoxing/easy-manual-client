@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { map } from 'rxjs/operators';
 import {
+  BOOKMARKED_ARTICLES,
+  BOOKMARK_ARTICLE,
   CREATE_ARTICLE,
   DELETE_ARTICLE,
   GET_ACCESSIBLE_ARTICLES,
@@ -10,6 +12,7 @@ import {
   GET_MY_ALL_ARTICLES,
   GET_USER_ALL_PUBLIC_ARTICLES,
   QUERY_ARTICLE,
+  REMOVE_BOOKMARK_ARTICLE,
   UPDATE_ARTICLE,
 } from '../graphql';
 @Injectable({
@@ -64,6 +67,26 @@ export class ArticleService {
         },
       })
       .pipe(map(({ data }) => data.deleteArticle));
+  }
+  bookmarkArticle(articleId: string) {
+    return this.apollo
+      .mutate<any>({
+        mutation: BOOKMARK_ARTICLE,
+        variables: {
+          articleId,
+        },
+      })
+      .pipe(map(({ data }) => data.bookmarkArticle));
+  }
+  removeArticleBookmark(articleId: string) {
+    return this.apollo
+      .mutate<any>({
+        mutation: REMOVE_BOOKMARK_ARTICLE,
+        variables: {
+          articleId,
+        },
+      })
+      .pipe(map(({ data }) => data.removeArticleBookmark));
   }
 
   getAccessibleArticles(page, sort) {
@@ -127,6 +150,22 @@ export class ArticleService {
       .pipe(
         map(({ data }) => {
           return data.getArticlesInGroup;
+        }),
+      );
+  }
+
+  bookmarkedArticles(page, sort) {
+    return this.apollo
+      .query<any>({
+        query: BOOKMARKED_ARTICLES,
+        variables: {
+          page,
+          sort,
+        },
+      })
+      .pipe(
+        map(({ data }) => {
+          return data.bookmarkedArticles;
         }),
       );
   }

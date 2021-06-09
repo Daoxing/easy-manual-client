@@ -17,17 +17,17 @@
         >
         </i>
       </span>
-      <span class="sort-button" (click)="sort('created_tms')">
+      <span class="sort-button" (click)="sort('display_nme')">
         Creator
         <i
           [ngClass]="{
             fa: true,
             'fa-sort-up':
-              defaultSort.field === 'created_tms' &&
+              defaultSort.field === 'display_nme' &&
               defaultSort.order === 'ASC',
-            'fa-sort': defaultSort.field !== 'created_tms',
+            'fa-sort': defaultSort.field !== 'display_nme',
             'fa-sort-down':
-              defaultSort.field === 'created_tms' &&
+              defaultSort.field === 'display_nme' &&
               defaultSort.order === 'DESC'
           }"
         ></i>
@@ -57,12 +57,12 @@
           article.article_nme
         }}</a>
       </span>
-      <span
-        ><a href="/user?id={{ article.article_id }}">
+      <span>
+        <a href="/user?id={{ article.article_id }}">
           <app-icon [iconURL]="article.created_user.icon_url"></app-icon>
-          {{ article.created_user.user_nme }}</a
-        ></span
-      >
+          {{ article.created_user.display_nme }}
+        </a>
+      </span>
       <span>{{ article.created_tms | date }}</span>
       <span *ngIf="enableAction">
         <button

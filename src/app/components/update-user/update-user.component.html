@@ -1,6 +1,6 @@
 <div class="main">
   <div class="edit-user-logo">
-    <div *ngIf="iconURL.length; else defaultIcon">
+    <div *ngIf="iconURL && iconURL.length; else defaultIcon">
       <img class="logo-image" [src]="iconURL" />
     </div>
     <ng-template #defaultIcon>
@@ -9,10 +9,24 @@
       ></i>
     </ng-template>
   </div>
+  <div class="edit-photo-button">
+    <button class="common-button">Edit Photo</button>
+  </div>
   <div class="edit-user-info">
     <div class="info-item">
       <div class="item-title">Username:</div>
-      <div class="item-input">{{ username.value }}</div>
+      <div class="item-input">
+        <input
+          *ngIf="!onboard; else onboardUsername"
+          (keyup)="enableSubmit()"
+          [formControl]="username"
+          type="text"
+          placeholder="Should be unique!"
+        />
+        <ng-template #onboardUsername>
+          {{ username.value }}
+        </ng-template>
+      </div>
     </div>
     <div class="info-item">
       <div class="item-title">Display Name:</div>

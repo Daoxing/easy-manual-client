@@ -18,9 +18,10 @@ export class UpdateUserComponent implements OnInit {
   displayName = new FormControl('');
   email = new FormControl('');
   phoneNumber = new FormControl('');
-  gender = new FormControl('');
+  gender = new FormControl('UNKNOWN');
   enableSubmitButton: boolean = false;
   getUserInfo: any;
+  onboard: boolean = false;
 
   text: string = '';
   constructor(
@@ -33,14 +34,23 @@ export class UpdateUserComponent implements OnInit {
     this.userService.me().subscribe((data) => {
       this.iconURL = data.icon_url;
       this.username.setValue(data.user_nme);
-      this.displayName.setValue(data.user_nme);
+      this.displayName.setValue(data.display_nme);
       this.email.setValue(data.email_address);
       this.phoneNumber.setValue(data.phone_nbr);
       this.gender.setValue(data.gender);
-      const { user_nme, email_address, phone_nbr, icon_url, gender } = data;
+      this.onboard = data.onboard;
+      const {
+        user_nme,
+        display_nme,
+        email_address,
+        phone_nbr,
+        icon_url,
+        gender,
+      } = data;
 
       this.getUserInfo = {
         user_nme,
+        display_nme,
         email_address,
         phone_nbr,
         icon_url,
@@ -55,7 +65,8 @@ export class UpdateUserComponent implements OnInit {
   enableSubmit() {
     const currentUserInfo = this.getCurrentUserInfo();
     const diff = getDiff(this.getUserInfo, currentUserInfo);
-    this.enableSubmitButton = !_.isEmpty(diff);
+    this.enableSubmitButton =
+      !_.isEmpty(diff) && !_.isEmpty(this.username.value);
   }
 
   updateUser() {
@@ -75,6 +86,7 @@ export class UpdateUserComponent implements OnInit {
   private getCurrentUserInfo() {
     return {
       user_nme: this.username.value,
+      display_nme: this.displayName.value,
       email_address: this.email.value,
       phone_nbr: this.phoneNumber.value,
       icon_url: this.iconURL,

@@ -12,7 +12,7 @@ import { UpdateUserComponent } from './components/update-user/update-user.compon
 const routes: Routes = [
   { path: ROUTER.HOME_URL, component: HomeComponent },
   { path: ROUTER.ARTICLE, component: ArticleComponent },
-  { path: ROUTER.EDIT_CREATE_URL, component: EditingArticleComponent },
+  { path: ROUTER.EDIT_ARTICLE_URL, component: EditingArticleComponent },
   { path: ROUTER.CREATE_ARTICLE_URL, component: EditingArticleComponent },
   { path: ROUTER.USER_URL, component: UserComponent },
   { path: ROUTER.USER_EDIT_URL, component: UpdateUserComponent },
